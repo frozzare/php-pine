@@ -100,7 +100,7 @@ class Pine
      */
     protected function createTask($name)
     {
-        return new Task($this->prefix_name($name));
+        return new Task($this->prefixName($name));
     }
 
     /**
@@ -129,7 +129,7 @@ class Pine
         }
 
         if ($this->exists()) {
-            $this->prefix = $this->find_prefix($file);
+            $this->prefix = $this->findPrefix($file);
         }
 
         return $this;
@@ -142,7 +142,7 @@ class Pine
      *
      * @return string
      */
-    protected function find_prefix($file)
+    protected function findPrefix($file)
     {
         if (! file_exists($file)) {
             return '';
@@ -217,7 +217,7 @@ class Pine
      *
      * @return string
      */
-    protected function prefix_name($name)
+    protected function prefixName($name)
     {
         $prefix = $this->prefix;
 
