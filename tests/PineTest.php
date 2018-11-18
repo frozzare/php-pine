@@ -23,7 +23,7 @@ class PineTest extends TestCase
 
     public function testSuccessRun()
     {
-        $output = $this->pine->file(__DIR__ . '/testdata/Pinefile')->run('build');
+        $output = $this->pine->file(__DIR__ . '/testdata/Pinefile.php')->run('build');
 
         $this->assertTrue($output);
         $this->expectOutputRegex('/Building.../');
@@ -31,7 +31,7 @@ class PineTest extends TestCase
 
     public function testBeforeRun()
     {
-        $output = $this->pine->file(__DIR__ . '/testdata/Pinefile')->run('build:site');
+        $output = $this->pine->file(__DIR__ . '/testdata/Pinefile.php')->run('build:site');
 
         $this->assertTrue($output);
         $this->expectOutputRegex('/Building.../');
@@ -40,7 +40,7 @@ class PineTest extends TestCase
 
     public function testAfterRun()
     {
-        $output = $this->pine->file(__DIR__ . '/testdata/Pinefile')->run('build:site');
+        $output = $this->pine->file(__DIR__ . '/testdata/Pinefile.php')->run('build:site');
 
         $this->assertTrue($output);
         $this->expectOutputRegex('/Building.../');
