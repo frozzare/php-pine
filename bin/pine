@@ -1,0 +1,45 @@
+#!/usr/bin/env php
+
+<?php
+
+$rootDir = realpath(__DIR__ . '/../');
+
+// Autoloader for standalone install.
+$autoloader = realpath($rootDir . '/vendor/autoload.php');
+
+if (!$autoloader) {
+    // Installed via `composer [global] require`.
+    $autoloader = realpath($rootDir . '/../../autoload.php');
+}
+
+if ($autoloader) {
+    require_once $autoloader;
+}
+
+$climate = new League\CLImate\CLImate;
+$climate->arguments->add([
+    'file' => [
+        'prefix'       => 'f',
+        'longPrefix'   => 'file',
+        'description'  => 'Pine file to run',
+        'defaultValue' => 'Pinefile',
+    ],
+    'help' => [
+        'longPrefix'   => 'help',
+        'description'  => 'Prints a usage statement',
+        'noValue'      => true,
+    ],
+]);
+
+$climate->arguments->parse();
+if ($climate->arguments->get('help')) {
+    $climate->usage();
+    exit;
+}
+
+$name = count($argv) > 1 ? $argv[1] : '';
+if (empty($name)) {
+    return;
+}
+
+pine()->run($name, array_slice($argv,2));
