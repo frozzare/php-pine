@@ -55,7 +55,7 @@ class Task
      *
      * @return bool
      */
-    public function run(array $argv = [])
+    public function run(Data $argv)
     {
         if (!is_callable($this->name)) {
             return false;

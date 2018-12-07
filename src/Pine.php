@@ -207,7 +207,7 @@ class Pine
             $this->tasks[$name] = $this->createTask($name);
         }
 
-        return $this->tasks[$name]->run($argv);
+        return $this->tasks[$name]->run(new Data($argv));
     }
 
     /**

@@ -1,10 +1,11 @@
 <?php
 
 // pine build [argv]
-function build($argv) {
+function build($data) {
     echo 'Building...';
-    echo "\n";
-    print_r($argv);
+
+    echo sprintf("\nHello, %s!\n", $data->flag('n'));
+    echo sprintf("Hello, %s!", $data->flag('name'));
 }
 
 // pine build:site
